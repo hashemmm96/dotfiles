@@ -1,0 +1,41 @@
+!Font
+URxvt.font: xft:Inconsolata\ for\ Powerline:size=11
+
+!Font spacing
+URxvt.letterSpace: -1
+
+!Make urls clickable, choose default browser to open with,
+!and choose button that opens link (1 is left click)
+URxvt.perl-ext-common:  default,matcher
+URxvt.urlLauncher:      firefox
+URxvt.matcher.button:   1
+
+!Transparency
+URxvt.transparent: false
+URxvt.shading: 10
+
+!Scrollbar
+URxvt.scrollBar: False
+
+!amount of lines in scrolling history
+URxvt.saveLines: 2000
+
+!Colors
+URxvt*background: #263238
+URxvt*foreground: #eeffff
+URxvt*color0:  #263238
+URxvt*color8:  #546e7a
+URxvt*color1:  #f04600
+URxvt*color9:  #ff763e
+URxvt*color2:  #42d242
+URxvt*color10: #8efa83
+URxvt*color3:  #fad430
+URxvt*color11: #ffeb95
+URxvt*color4:  #4882ff
+URxvt*color12: #83aaff
+URxvt*color5:  #b916d7
+URxvt*color13: #da64ef
+URxvt*color6:  #3dd7ff
+URxvt*color14: #8ae7ff
+URxvt*color7:  #d6d6d6
+URxvt*color15: #eeffff

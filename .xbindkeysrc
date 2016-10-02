@@ -1,0 +1,34 @@
+t Use xbindkeys -k for getting the templates
+# for different keys or key combos
+
+# Toggle sound
+"amixer sset Master toggle"
+	XF86AudioMute
+
+# Increase volume	
+"amixer -q sset Master 3%+"
+	XF86AudioRaiseVolume
+
+# Decrease volume
+"amixer -q sset Master 3%-"
+	XF86AudioLowerVolume
+
+# Toggle pause/play (mpc)
+"mpc toggle"
+	XF86AudioPlay
+
+# Previous track (mpc)
+"mpc prev"
+	XF86AudioPrev
+
+# Next track (mpc)
+"mpc next"
+	XF86AudioNext
+
+# Brightness down
+"xbacklight -dec 10"
+	XF86MonBrightnessDown
+
+# Brightness up
+"xbacklight -inc 10"
+	XF86MonBrightnessUp

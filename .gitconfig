@@ -1,0 +1,7 @@
+[http]
+	sslverify = false
+[user]
+	name = hashem123
+	email = hashemmm96@gmail.com
+[core]
+	editor = emacs

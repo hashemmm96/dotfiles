@@ -1,0 +1,54 @@
+#!/bin/bash
+
+source ~/.config/lemonbar/setup
+
+
+# while true; do
+#     echo "%{l}%{O 2}$(volume) $(music_controls) $(music)\
+#           %{c}$(title)\
+#           %{r}$(battery) $(network)$(ssid) %{O 2} $(_date) %{O 2} $(_time)"
+#     sleep 1s
+# done |
+
+# without music controls, for laptop
+while true; do
+    echo "%{l}%{O 2}$(volume) %{c}$(title)\
+          %{r}$(battery) $(network)$(ssid) %{O 2} $(_date) %{O 2} $(_time)"
+    sleep 1s
+done |
+
+# Launch lemonbar, -g is height
+# -B is background color, 6 numbers for non-transparent colors,
+# 8 numbers for transparency, where the first 2 are opacity values.
+#
+# Hex Opacity Values
+# 
+# 100% — FF
+# 95% — F2
+# 90% — E6
+# 85% — D9
+# 80% — CC
+# 75% — BF
+# 70% — B3
+# 65% — A6
+# 60% — 99
+# 55% — 8C
+# 50% — 80
+# 45% — 73
+# 40% — 66
+# 35% — 59
+# 30% — 4D
+# 25% — 40
+# 20% — 33
+# 15% — 26
+# 10% — 1A
+# 5% — 0D
+# 0% — 00
+
+lemonbar\
+    -t\
+    -g "x20"\
+    -F "#ffffff"\
+    -B "#99000000"\
+    -f "$PANEL_FONT_FAMILY"\
+    -f "$ICON_FONT" | bash
