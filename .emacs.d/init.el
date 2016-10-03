@@ -18,10 +18,11 @@
     ("a800120841da457aa2f86b98fb9fd8df8ba682cebde033d7dbf8077c1b7d677a" default)))
  '(custom-theme-directory "~/.emacs.d/themes")
  '(doc-view-resolution 200)
+ '(electric-pair-mode t)
  '(explicit-shell-file-name nil)
  '(package-selected-packages
    (quote
-    (auctex monokai-theme magit latex-preview-pane helm evil)))
+    (auto-complete-auctex auto-complete auctex monokai-theme magit latex-preview-pane helm evil)))
  '(tool-bar-mode nil))
 
 (custom-set-faces
@@ -31,13 +32,24 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Inconsolata for Powerline" :foundry "PfEd" :slant normal :weight normal :height 113 :width normal)))))
 
+
 (setq evil-want-C-u-scroll t)
 (require 'evil)
+(require 'auto-complete)
+
+ ;; set auto-complete to work on all modes.
+(defun auto-complete-mode-maybe ()
+  "No maybe for you. Only AC!"
+  (unless (minibufferp (current-buffer))
+    (auto-complete-mode 1)))
+
+
 (evil-mode 1)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (latex-preview-pane-enable)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-auto-complete-mode t)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (column-number-mode 1)
