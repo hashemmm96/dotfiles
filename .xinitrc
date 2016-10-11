@@ -1,11 +1,8 @@
 #!/bin/bash
 setxkbmap se
 [[ -f ~/.Xresources ]] && xrdb -merge -I $HOME ~/.Xresources
-mpd ~/.config/mpd/mpd.conf
-~/scripts/lightsOn.sh 550 &
 xset -b &
-xss-lock -- xscreensaver-command -lock  &
-xscreensaver &
+xss-lock -- sflock & # Need to modify sflock.c so that default font is present on system. 
 xbindkeys &
 [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap &
 compton -b &

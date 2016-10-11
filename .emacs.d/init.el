@@ -43,7 +43,7 @@
   (unless (minibufferp (current-buffer))
     (auto-complete-mode 1)))
 
-
+(server-start)
 (evil-mode 1)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (latex-preview-pane-enable)

@@ -53,7 +53,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="/usr/bin/core_perl:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -126,4 +126,6 @@ add-zsh-hook chpwd chpwd_recent_dirs
 #alias ls='ls -ah --color=auto'
 alias d='cdr -l'
 alias skype='apulse32 skype'
-alias pac='yaourt'
+alias pac='pacaur'
+alias grep='grep -i'
+alias lock='sflock'
