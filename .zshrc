@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/hashtomte/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -129,3 +129,4 @@ alias skype='apulse32 skype'
 alias pac='pacaur'
 alias grep='grep -i'
 alias lock='sflock'
+alias hc='herbstclient'
