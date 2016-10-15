@@ -67,12 +67,12 @@ network(){
 # 	fi
 # 	echo -e $icon $ssid ' '
 	icon='\uE63E'
-	status=$(iw wlo1 link | grep onnected | awk '{print $1}')
+	status=$(iw wlan0 link | grep onnected | awk '{print $1}')
 	if [ $status == "Not" ]
 	then
-		ssid=$(iw wlo1 link)
+		ssid=$(iw wlan0 link)
 	else
-		ssid=$(iw wlo1 link | grep SSID | awk '{print $2}')	
+		ssid=$(iw wlan0 link | grep SSID | awk '{print $2}')	
 	fi
 
 	echo -e $icon $ssid ' '
