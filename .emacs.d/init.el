@@ -15,14 +15,14 @@
  '(custom-enabled-themes (quote (monokai)))
  '(custom-safe-themes
    (quote
-    ("a800120841da457aa2f86b98fb9fd8df8ba682cebde033d7dbf8077c1b7d677a" default)))
+	("a800120841da457aa2f86b98fb9fd8df8ba682cebde033d7dbf8077c1b7d677a" default)))
  '(custom-theme-directory "~/.emacs.d/themes")
  '(doc-view-resolution 200)
  '(electric-pair-mode t)
  '(explicit-shell-file-name nil)
  '(package-selected-packages
    (quote
-    (auto-complete-auctex auto-complete auctex monokai-theme magit latex-preview-pane helm evil)))
+	(irony auto-complete-auctex auto-complete auctex monokai-theme magit latex-preview-pane helm evil)))
  '(tool-bar-mode nil))
 
 (custom-set-faces
@@ -59,6 +59,12 @@
 (defvaralias 'cperl-indent-level 'tab-width)
 
 
+(require 'cc-mode)
+(setq-default c-basic-offset 4
+	      tab-width 4
+	      indent-tabs-mode t)
+(add-to-list 'c-mode-common-hook
+(lambda () (setq c-syntactic-indentation nil)))
 
    ;;; C-c as general purpose escape key sequence.
    ;;;

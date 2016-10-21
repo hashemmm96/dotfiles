@@ -18,7 +18,7 @@ URxvt.shading: 10
 URxvt.scrollBar: False
 
 !amount of lines in scrolling history
-URxvt.saveLines: 2000
+URxvt.saveLines: 8000
 !Cursor blinking
 URxvt.cursorBlink: 1
 !Colors
