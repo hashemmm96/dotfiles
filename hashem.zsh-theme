@@ -165,7 +165,7 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue white '%~'
+  prompt_segment blue black '%~'
 }
 
 # Virtualenv: current working virtualenv
