@@ -20,9 +20,13 @@
  '(doc-view-resolution 200)
  '(electric-pair-mode t)
  '(explicit-shell-file-name nil)
+ '(initial-buffer-choice "~/")
+ '(jdee-compiler (quote ("javac")))
+ '(jdee-jdk (quote ("8")))
+ '(jdee-jdk-registry (quote (("1.8" . "/usr/lib/jvm/java-8-openjdk"))))
  '(package-selected-packages
    (quote
-	(irony auto-complete-auctex auto-complete auctex monokai-theme magit latex-preview-pane helm evil)))
+	(jdee irony auto-complete-auctex auto-complete auctex monokai-theme magit latex-preview-pane helm evil)))
  '(tool-bar-mode nil))
 
 (custom-set-faces
@@ -66,7 +70,7 @@
 (add-to-list 'c-mode-common-hook
 (lambda () (setq c-syntactic-indentation nil)))
 
-   ;;; C-c as general purpose escape key sequence.
+   ;;; C-g as general purpose escape key sequence.
    ;;;
 (defun my-esc (prompt)
   "Functionality for escaping generally.  Includes exiting Evil insert state and C-g binding. "
@@ -78,10 +82,10 @@
    ;; Note: As long as I return [escape] in normal-state, I don't need this.
    ;;((eq overriding-terminal-local-map evil-read-key-map) (keyboard-quit) (kbd ""))
    (t (kbd "C-g"))))
-(define-key key-translation-map (kbd "C-c") 'my-esc)
+(define-key key-translation-map (kbd "C-q") 'my-esc)
 ;; Works around the fact that Evil uses read-event directly when in operator state, which
 ;; doesn't use the key-translation-map.
-(define-key evil-operator-state-map (kbd "C-c") 'keyboard-quit)
+(define-key evil-operator-state-map (kbd "C-q") 'keyboard-quit)
 ;; Not sure what behavior this changes, but might as well set it, seeing the Elisp manual's
 ;; documentation of it.
-(set-quit-char "C-c")
+(set-quit-char "C-q")
