@@ -65,7 +65,7 @@
 (defvaralias 'cperl-indent-level 'tab-width)
 
 (add-to-list 'auto-mode-alist '("\\.hs\\'" . haskell-mode))
-
+(add-to-list 'auto-mode-alist '("\\.hs\\'" . haskell-indent-mode))
 
 (require 'cc-mode)
 (setq-default c-basic-offset 4
@@ -75,7 +75,7 @@
 (lambda () (setq c-syntactic-indentation nil)))
 (add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
 
-   ;;; C-q as general purpose escape key sequence.
+   ;;; C-c as general purpose escape key sequence.
    ;;;
 (defun my-esc (prompt)
   "Functionality for escaping generally.  Includes exiting Evil insert state and C-g binding. "
