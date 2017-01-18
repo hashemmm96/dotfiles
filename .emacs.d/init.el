@@ -15,14 +15,20 @@
  '(custom-enabled-themes (quote (monokai)))
  '(custom-safe-themes
    (quote
-	("a800120841da457aa2f86b98fb9fd8df8ba682cebde033d7dbf8077c1b7d677a" default)))
+	("c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "a800120841da457aa2f86b98fb9fd8df8ba682cebde033d7dbf8077c1b7d677a" default)))
  '(custom-theme-directory "~/.emacs.d/themes")
  '(doc-view-resolution 200)
  '(electric-pair-mode t)
  '(explicit-shell-file-name nil)
+ '(jdee-compiler (quote ("javac")))
+ '(jdee-jdk (quote ("1.8")))
+ '(jdee-jdk-registry
+   (quote
+	(("1.8" . "/usr/lib/jvm/java-8-openjdk")
+	 ("1.8" . "/usr/lib64/jvm/java-8-openjdk"))))
  '(package-selected-packages
    (quote
-	(irony auto-complete-auctex auto-complete auctex monokai-theme magit latex-preview-pane helm evil)))
+	(haskell-tab-indent haskell-mode web-mode jdee flycheck irony auto-complete-auctex auto-complete auctex monokai-theme latex-preview-pane helm evil)))
  '(tool-bar-mode nil))
 
 (custom-set-faces
@@ -58,6 +64,8 @@
 (defvaralias 'c-basic-offset 'tab-width)
 (defvaralias 'cperl-indent-level 'tab-width)
 
+(add-to-list 'auto-mode-alist '("\\.hs\\'" . haskell-mode))
+
 
 (require 'cc-mode)
 (setq-default c-basic-offset 4
@@ -65,6 +73,7 @@
 	      indent-tabs-mode t)
 (add-to-list 'c-mode-common-hook
 (lambda () (setq c-syntactic-indentation nil)))
+(add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
 
    ;;; C-c as general purpose escape key sequence.
    ;;;
@@ -78,10 +87,10 @@
    ;; Note: As long as I return [escape] in normal-state, I don't need this.
    ;;((eq overriding-terminal-local-map evil-read-key-map) (keyboard-quit) (kbd ""))
    (t (kbd "C-g"))))
-(define-key key-translation-map (kbd "C-c") 'my-esc)
+(define-key key-translation-map (kbd "C-q") 'my-esc)
 ;; Works around the fact that Evil uses read-event directly when in operator state, which
 ;; doesn't use the key-translation-map.
-(define-key evil-operator-state-map (kbd "C-c") 'keyboard-quit)
+(define-key evil-operator-state-map (kbd "C-q") 'keyboard-quit)
 ;; Not sure what behavior this changes, but might as well set it, seeing the Elisp manual's
 ;; documentation of it.
-(set-quit-char "C-c")
+(set-quit-char "C-q")
