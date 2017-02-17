@@ -2,8 +2,8 @@
 
 PANEL_FIFO=/tmp/panel-fifo
 PANEL_HEIGHT=20
-PANEL_FONT_FAMILY="Noto Sans:size=8"
-ICON_FONT="MaterialIcons:size=10"
+PANEL_FONT_FAMILY="Noto Sans:size=11"
+ICON_FONT="MaterialIcons:size=14"
 COLOR_BACKGROUND="#BEC4C7"
 COLOR_BACKGROUND="#e9cc24"
 COLOR_FOREGROUND="#000000"
