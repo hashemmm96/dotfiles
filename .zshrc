@@ -126,7 +126,7 @@ add-zsh-hook chpwd chpwd_recent_dirs
 #alias ls='ls -ah --color=auto'
 alias d='cdr -l'
 alias skype='apulse32 skype'
-alias pac='pacaur'
+alias pac='yaourt'
 alias grep='grep -i'
 alias lock='sflock'
 alias hc='herbstclient'
