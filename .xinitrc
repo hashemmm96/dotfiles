@@ -2,7 +2,7 @@
 setxkbmap se
 [[ -f ~/.Xresources ]] && xrdb -merge -I $HOME ~/.Xresources
 xset -b &
-xss-lock -- sflock & # Need to modify sflock.c so that default font is present on system. 
+xss-lock -- sflock -f 9x15 & 
 setxkbmap -option ctrl:nocaps &
 xbindkeys &
 [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap &
