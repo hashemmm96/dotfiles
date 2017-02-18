@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/bin/bash 
 PANEL_FIFO=/tmp/panel-fifo
 PANEL_HEIGHT=20
 PANEL_FONT_FAMILY="Noto Sans:size=11"
