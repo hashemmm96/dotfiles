@@ -1,8 +1,8 @@
 !Font
-URxvt.font: xft:Inconsolata\ for\ Powerline:size=11
+URxvt.font: xft:InconsolataGo Nerd Font:style=Regular:size=12
 
 !Font spacing
-URxvt.letterSpace: -1
+URxvt.letterSpace: 1
 
 !Make urls clickable, choose default browser to open with,
 !and choose button that opens link (1 is left click)
