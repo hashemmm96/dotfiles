@@ -49,6 +49,6 @@ lemonbar\
     -t\
     -g "x20"\
     -F "#ffffff"\
-    -B "#99000000"\
+    -B "#BB000000"\
     -f "$PANEL_FONT_FAMILY"\
     -f "$ICON_FONT" | bash

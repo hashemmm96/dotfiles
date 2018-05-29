@@ -84,7 +84,7 @@ ssid(){
 
 # Volume
 volume(){
-	sound=$(amixer get Master | grep % | sed -n 1p | awk -F '[' '{print $4}' | awk -F ']' '{print $1}' )
+	sound=$(amixer get Master | grep % | sed -n 1p | awk -F '[' '{print $3}' | awk -F ']' '{print $1}' )
 	vol=$(amixer get Master | grep % | sed -n 1p | awk -F '[' '{print $2}' | awk -F ']' '{print $1}' | sed s/%//)
 	if [ $vol = 0 ]; then
 		icon='\uE04F'
@@ -100,11 +100,12 @@ volume(){
 		icon='\uE04F'
 	fi
 
-	echo -e "%{A:amixer -q set Master 5%+ && ${UPDATE}:}\ue5d8%{A}\
-					 %{A:amixer -q set Master 5%- && ${UPDATE}:}\ue5db%{A}"\
-					 '' $icon $vol'%' ' '
-}
+	#echo -e "%{A:amixer -q set Master 5%+ && ${UPDATE}:}\ue5d8%{A}\
+	#				 %{A:amixer -q set Master 5%- && ${UPDATE}:}\ue5db%{A}"\
+	#				 '' $icon $vol'%' ' '
+	echo -e " $icon $vol% "
 
+} 
 #Music
 music(){
 	song=$(mpc current)
