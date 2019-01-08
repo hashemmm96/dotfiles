@@ -22,7 +22,7 @@ wireless _first_ {
 }
 
 battery all {
-        format = "Battery: %status %percentage %remaining"
+        format = "%status %percentage %remaining"
 }
 
 volume master {
