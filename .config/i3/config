@@ -95,8 +95,8 @@ bindsym XF86AudioLowerVolume exec sh ~/.config/i3/lower_vol.sh #decrease sound v
 bindsym XF86AudioMute        exec sh ~/.config/i3/mute.sh # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
