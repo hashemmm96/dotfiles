@@ -17,77 +17,80 @@ font pango:Noto Sans 10
 
 # color palette
 
-# black dark/light
-set $base00 #2c3e50 
-set $base08 #34495e
-# red dark/light
-set $base01 #c0392b
-set $base09 #e74c3c
-# green dark/light
-set $base02 #27ae60
-set $base0A #2ecc71
-# yellow dark/light
-set $base03 #f39c12
-set $base0B #f1c40f
-# blue dark/light
-set $base04 #2980b9
-set $base0C #3498db
-# magenta dark/light
-set $base05 #8e44ad
-set $base0D #9b59b6
-# cyan dark/light
-set $base06 #16a085
-set $base0E #1abc9c
-# white dark/light
-set $base07 #bdc3c7
-set $base0F #ecf0f1
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $bg      i3wm.color0
+set_from_resource $fg      i3wm.color7 
+set_from_resource $color1  i3wm.color1 
+set_from_resource $color2  i3wm.color2 
+set_from_resource $color3  i3wm.color3 
+set_from_resource $color4  i3wm.color4
+set_from_resource $color5  i3wm.color5
+set_from_resource $color6  i3wm.color6
+set_from_resource $color8  i3wm.color8 
+set_from_resource $color9  i3wm.color9 
+set_from_resource $color10 i3wm.color10
+set_from_resource $color11 i3wm.color11
+set_from_resource $color12 i3wm.color12
 
-# Basic color configuration using the Base16 variables for windows and borders.
-# Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base0C $base04 $base00 $base0C $base0C
-client.focused_inactive $base00 $base00 $base07 $base00 $base00
-client.unfocused        $base00 $base00 $base07 $base08 $base00
-client.urgent           $base09 $base09 $base00 $base09 $base09
-client.placeholder      $base00 $base00 $base07 $base00 $base00
-client.background $base00
+# class                 border  backgr. text indicator child_border
+client.focused          $color3 $color3 $bg  $color3   $color3
+client.focused_inactive $color3 $color3 $bg  $color3   $color3
+client.unfocused        $color2 $color2 $bg  $color2   $color2
+client.urgent           $color4 $color4 $bg  $color4   $color4
+client.placeholder      $color3 $color3 $bg  $color3   $color3
 
-# startup commands
-# restore wallpaper
-exec ~/.fehbg
+client.background       $color3
 
-# start compton
-exec compton
-# start slack
-exec slack
-
-# lock on suspend
-set $Locker i3lock -n -i ~/wallpaper.png
-exec xss-lock -- $Locker
-bindsym $mod+Ctrl+l exec $Locker
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # Basic bar configuration using the Base16 variables.
 
+# bar {
+#     status_command i3status
+#     position bottom
+#     tray_output primary
+# 
+#     colors {
+#         background $color3
+#         separator  $bg
+#         statusline $bg
+# 
+#         # State             Border  BG      Text
+#         focused_workspace   $bg     $color6 $bg
+#         active_workspace    $bg     $color6 $bg
+#         inactive_workspace  $bg     $color3 $bg
+#         urgent_workspace    $bg     $color3 $bg
+#         binding_mode        $bg     $color3 $bg
+#     }
+# }
+# 
 
-bar {
-    status_command i3status
-    position bottom
-    tray_output primary
+# start dmenu (a program launcher)
+# PROTIP: You can also dynamically set dmenu's colors this way:
+bindsym $mod+d exec dmenu_run -nb "$color3" -nf "$bg" -sb "$bg" -sf "$color3"
 
-    colors {
-        background $base08
-        separator  $base0C
-        statusline $base0A
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-        # State             Border  BG      Text
-        focused_workspace   $base0C $base0C $base00
-        active_workspace    $base0C $base0C $base00
-        inactive_workspace  $base00 $base00 $base07
-        urgent_workspace    $base01 $base01 $base00
-        binding_mode        $base00 $base0A $base00
-    }
-}
+# Restore color schemes and wallpaper
+exec cat /home/hashtomte/.cache/wal/sequences
+# start compton
+exec compton
+# start slack
+# exec slack
+
+# lock on suspend
+set $Locker i3lock -n -i ~/Pictures/wallpaper.png # Must be png!
+exec xss-lock -- $Locker
+bindsym $mod+Ctrl+l exec $Locker
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec sh ~/.config/i3/raise_vol.sh #increase sound volume
@@ -123,13 +126,6 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+w kill
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus down
