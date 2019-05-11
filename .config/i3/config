@@ -81,7 +81,7 @@ bindsym $mod+d exec dmenu_run -nb "$color3" -nf "$bg" -sb "$bg" -sf "$color3"
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # Restore color schemes and wallpaper
-exec cat /home/hashtomte/.cache/wal/sequences
+exec wal -R
 # start compton
 exec compton
 # start slack
