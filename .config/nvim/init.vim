@@ -12,6 +12,8 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-sensible'
 Plug 'jceb/vim-orgmode'
 Plug 'nvie/vim-flake8'
+Plug 'rhysd/vim-clang-format'
+Plug 'neoclide/jsonc.vim'
 call plug#end()
 
 colorscheme vim-monokai-tasty
@@ -49,6 +51,11 @@ set guifont=Inconsolata-g:h10:cANSI
 set noshowmode
 set nocompatible
 
+" treat json as jsonc
+augroup JsonToJsonc
+    autocmd! FileType json set filetype=jsonc syntax=jsonc
+augroup END
+
 " Highlight trailing spaces
 highlight ExtraWhitespace ctermbg=darkred guibg=darkred
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=darkred
@@ -81,8 +88,13 @@ nnoremap Y y$
 " clear highligt with leader-h
 nnoremap <silent><leader>h :noh<CR>
 
-"map <C-K> :pyf C:/prg/llvm-project-10.0.1/clang/tools/clang-format/clang-format.py<cr>
-"imap <C-K> <c-o>:pyf  C:/prg/llvm-project-10.0.1/clang/tools/clang-format/clang-format.py<cr>
+" clang-format options and mapping
+let g:clang_format#style_options = {
+      \ "BasedOnStyle" : "llvm",
+      \ "ColumnLimit" : "99"}
+
+map <C-K> :ClangFormat<CR>
+imap <C-K> :ClangFormat<CR>
 
 " Maps for Swedish keyboard
 map ö [
