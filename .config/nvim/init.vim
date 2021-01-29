@@ -142,8 +142,7 @@ silent! helptags ALL
 
 " Set title of window to <filename> (<dir>)
 set title
-auto BufEnter * set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
-
+auto BufEnter * set titlestring=\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}
 
 
 
