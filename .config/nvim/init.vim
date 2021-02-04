@@ -14,6 +14,7 @@ Plug 'jceb/vim-orgmode'
 Plug 'nvie/vim-flake8'
 Plug 'rhysd/vim-clang-format'
 Plug 'neoclide/jsonc.vim'
+Plug 'pprovost/vim-ps1'
 call plug#end()
 
 colorscheme vim-monokai-tasty
@@ -21,7 +22,7 @@ colorscheme vim-monokai-tasty
 set relativenumber  " Show relative line numbers
 set number          " Show abs line number on current line
 set linebreak       " Break lines at word (requires Wrap lines)
-set showbreak=+++   " Symbol shown at line break
+set showbreak=>>>   " Symbol shown at line break
 set textwidth=90    " Line wrap (number of cols)
 set showmatch       " Highlight matching brace
 set visualbell      " Use visual bell (no beeping)
@@ -88,13 +89,23 @@ nnoremap Y y$
 " clear highligt with leader-h
 nnoremap <silent><leader>h :noh<CR>
 
-" clang-format options and mapping
+" clang-format options and mappings
+let g:clang_format#detect_style_file = 1
+let g:clang_format#enable_fallback_style = 1
 let g:clang_format#style_options = {
       \ "BasedOnStyle" : "llvm",
-      \ "ColumnLimit" : "99"}
+      \ "AlignEscapedNewlines": "Left",
+      \ "AllowShortIfStatementsOnASingleLine": "WithoutElse",
+      \ "BinPackArguments": "true",
+      \ "BinPackParameters": "true",
+      \ "BreakBeforeBinaryOperators": "NonAssignment",
+      \ "BreakBeforeBraces": "WebKit",
+      \ "BreakStringLiterals": "false",
+      \ "ColumnLimit" : "99",
+      \ "MaxEmptyLinesToKeep": "3",}
 
-map <C-K> :ClangFormat<CR>
-imap <C-K> :ClangFormat<CR>
+autocmd FileType c,cpp,objc nnoremap <buffer><C-K> :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><C-K> :ClangFormat<CR>
 
 " Maps for Swedish keyboard
 map ö [
@@ -119,8 +130,8 @@ nnoremap <C-g> :Ag<CR>
 let $FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 " Delphi settings
-auto BufNewFile,BufReadPre *.pas unlet g:delphi_space_errors
-auto BufNewFile,BufReadPre *.dfm unlet g:delphi_space_errors
+"auto BufNewFile,BufReadPre *.pas unlet g:delphi_leading_space_error
+"auto BufNewFile,BufReadPre *.dfm unlet g:delphi_leading_space_error
 auto BufNewFile,BufReadPost *.pas setlocal expandtab
 auto BufNewFile,BufReadPost *.dfm setlocal expandtab
 
