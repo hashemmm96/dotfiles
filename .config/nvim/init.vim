@@ -12,7 +12,6 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-sensible'
 Plug 'jceb/vim-orgmode'
 Plug 'nvie/vim-flake8'
-Plug 'rhysd/vim-clang-format'
 Plug 'neoclide/jsonc.vim'
 Plug 'pprovost/vim-ps1'
 call plug#end()
@@ -88,24 +87,6 @@ nnoremap Y y$
 
 " clear highligt with leader-h
 nnoremap <silent><leader>h :noh<CR>
-
-" clang-format options and mappings
-let g:clang_format#detect_style_file = 1
-let g:clang_format#enable_fallback_style = 1
-let g:clang_format#style_options = {
-      \ "BasedOnStyle" : "llvm",
-      \ "AlignEscapedNewlines": "Left",
-      \ "AllowShortIfStatementsOnASingleLine": "WithoutElse",
-      \ "BinPackArguments": "true",
-      \ "BinPackParameters": "true",
-      \ "BreakBeforeBinaryOperators": "NonAssignment",
-      \ "BreakBeforeBraces": "WebKit",
-      \ "BreakStringLiterals": "false",
-      \ "ColumnLimit" : "99",
-      \ "MaxEmptyLinesToKeep": "3",}
-
-autocmd FileType c,cpp,objc nnoremap <buffer><C-K> :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><C-K> :ClangFormat<CR>
 
 " Maps for Swedish keyboard
 map ö [
@@ -226,7 +207,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> <leader>d :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
