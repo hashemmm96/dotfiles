@@ -6,25 +6,29 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'mattia72/vim-delphi'
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'mattia72/vim-delphi'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-sensible'
 Plug 'jceb/vim-orgmode'
-Plug 'nvie/vim-flake8'
-Plug 'neoclide/jsonc.vim'
-Plug 'pprovost/vim-ps1'
+Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
+Plug 'rust-lang/rust.vim'
+"Plug 'nvie/vim-flake8'
+"Plug 'neoclide/jsonc.vim'
+"Plug 'pprovost/vim-ps1'
 call plug#end()
 
-colorscheme vim-monokai-tasty
+filetype plugin indent on
 
-set relativenumber  " Show relative line numbers
+"set relativenumber  " Show relative line numbers
 set number          " Show abs line number on current line
 set linebreak       " Break lines at word (requires Wrap lines)
 set showbreak=>>>   " Symbol shown at line break
 set textwidth=90    " Line wrap (number of cols)
 set showmatch       " Highlight matching brace
 set visualbell      " Use visual bell (no beeping)
+set mouse=a         " Enable mouse scrolling
 
 set hlsearch     " Highlight all search results
 set smartcase    " Enable smart-case search
@@ -52,9 +56,9 @@ set noshowmode
 set nocompatible
 
 " treat json as jsonc
-augroup JsonToJsonc
-    autocmd! FileType json set filetype=jsonc syntax=jsonc
-augroup END
+" augroup JsonToJsonc
+"     autocmd! FileType json set filetype=jsonc syntax=jsonc
+" augroup END
 
 " Highlight trailing spaces
 highlight ExtraWhitespace ctermbg=darkred guibg=darkred
@@ -65,9 +69,10 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+colorscheme vim-monokai-tasty
 autocmd VimEnter * AirlineTheme monokai_tasty
 
-autocmd BufWritePost *.py call Flake8()
+" autocmd BufWritePost *.py call Flake8()
 
 let mapleader = ','
 
@@ -89,44 +94,45 @@ nnoremap Y y$
 nnoremap <silent><leader>h :noh<CR>
 
 " Maps for Swedish keyboard
-map ö [
-map ä ]
-map Ö {
-map Ä }
-map <C-ö> <C-[>
-map <C-ä> <C-]>
-map <C-Ö> <C-{>
-map <C-Ä> <C-}>
+nmap ö [
+nmap ä ]
+nmap Ö {
+nmap Ä }
+nmap <C-ö> <C-[>
+nmap <C-ä> <C-]>
+nmap <C-Ö> <C-{>
+nmap <C-Ä> <C-}>
 nmap - /
 nmap ~ §
 
+let g:python3_host_prog='/bin/python3'
 " File navigation
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 nnoremap <C-p> :Files<CR>
-"nnoremap <C-g> :Rg<CR>
+nnoremap <C-g> :Rg<CR>
 "rg doesnt support mercurial :/
-nnoremap <C-g> :Ag<CR>
-let $FZF_DEFAULT_COMMAND='ag -l -g ""'
+"nnoremap <C-g> :Ag<CR>
+"let $FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 " Delphi settings
 "auto BufNewFile,BufReadPre *.pas unlet g:delphi_leading_space_error
 "auto BufNewFile,BufReadPre *.dfm unlet g:delphi_leading_space_error
-auto BufNewFile,BufReadPost *.pas setlocal expandtab
-auto BufNewFile,BufReadPost *.dfm setlocal expandtab
+" auto BufNewFile,BufReadPost *.pas setlocal expandtab
+" auto BufNewFile,BufReadPost *.dfm setlocal expandtab
 
 " Gutentags settings
-let g:gutentags_add_default_project_roots = 0
-let g:gutentags_project_root = ['.hg', '.git']
-let g:gutentags_generate_on_new = 1
-let g:gutentags_generate_on_missing = 1
-let g:gutentags_generate_on_write = 1
-let g:gutentags_generate_on_empty_buffer = 0
-let g:gutentags_ctags_extra_args = [
-      \ '--tag-relative=yes',
-      \ '--fields=+ailmnS',
-      \ ]
+" let g:gutentags_add_default_project_roots = 0
+" let g:gutentags_project_root = ['.hg', '.git']
+" let g:gutentags_generate_on_new = 1
+" let g:gutentags_generate_on_missing = 1
+" let g:gutentags_generate_on_write = 1
+" let g:gutentags_generate_on_empty_buffer = 0
+" let g:gutentags_ctags_extra_args = [
+"       \ '--tag-relative=yes',
+"       \ '--fields=+ailmnS',
+"       \ ]
 
 " Vim-orgmode
 packloadall
@@ -151,7 +157,7 @@ set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+" set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -273,7 +279,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline^=%{coc#status()}
 
 " Mappings for CoCList
 " Show all diagnostics.
