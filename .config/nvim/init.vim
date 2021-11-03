@@ -142,6 +142,7 @@ silent! helptags ALL
 set title
 auto BufEnter * set titlestring=\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}
 
+command! -nargs=0 RemoveTrailingWhitespace %s/\s\+$//e
 
 
 "Coc settings
