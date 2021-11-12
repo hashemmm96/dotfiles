@@ -1,7 +1,22 @@
-[http]
-	sslverify = false
-[user]
-	name = hashem123
-	email = hashemmm96@gmail.com
 [core]
-	editor = emacs
+  editor = nvim
+
+[color]
+  ui = auto
+
+[sendemail]
+  confirm = always
+  suppresscc = self
+
+[diff]
+  tool = nvimdiff
+
+[difftool]
+  prompt = false
+
+[difftool "nvimdiff"]
+  cmd = "nvim -d -R -M \"$LOCAL\" \"$REMOTE\""
+
+[alias]
+  l1 = log --color --graph --pretty=format:\"%C(bold blue)%h%Creset   %C(green)%d%Creset %s %C(yellow)%an %C(italic magenta)%ad %Creset\" --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S'
+  ll = l1 --all
