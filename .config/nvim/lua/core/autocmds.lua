@@ -67,6 +67,14 @@ autocmd('Filetype', {
   command = 'setlocal foldmethod=indent'
 })
 
+-- Use jsonc instead of json
+augroup('jsonc', { clear = true })
+autocmd('Filetype', {
+  group = 'jsonc',
+  pattern = { 'json' },
+  command = 'setlocal filetype=jsonc'
+})
+
 -- Terminal settings:
 ---------------------
 
