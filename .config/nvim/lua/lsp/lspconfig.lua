@@ -112,10 +112,47 @@ HTML/CSS/JSON -> vscode-html-languageserver
 JavaScript/TypeScript -> tsserver
 --]]
 
--- settings for lua-language-server can be found on https://github.com/sumneko/lua-language-server/wiki/Settings .
+-- Define `root_dir` when needed
+-- See: https://github.com/neovim/nvim-lspconfig/issues/320
+-- This is a workaround, maybe not work with some servers.
+local root_dir = function()
+  return vim.fn.getcwd()
+end
+
+-- Setup mason which auto installs LSP servers
+require("mason").setup()
+require("mason-lspconfig").setup()
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches.
+-- Add your language server below:
+local servers = {
+  'bashls',
+  'clangd',
+  'cssls',
+  'gopls',
+  'html',
+  'pyright',
+  'tsserver',
+}
+
+-- Call setup
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    root_dir = root_dir,
+    capabilities = capabilities,
+    flags = {
+      -- default in neovim 0.7+
+      debounce_text_changes = 150,
+    }
+  }
+end
+
 lspconfig.sumneko_lua.setup {
-  capabilities = capabilities,
   on_attach = on_attach,
+  root_dir = root_dir,
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
@@ -137,41 +174,3 @@ lspconfig.sumneko_lua.setup {
     },
   },
 }
-
--- Define `root_dir` when needed
--- See: https://github.com/neovim/nvim-lspconfig/issues/320
--- This is a workaround, maybe not work with some servers.
-local root_dir = function()
-  return vim.fn.getcwd()
-end
-
--- Setup mason which auto installs LSP servers
-require("mason").setup()
-require("mason-lspconfig").setup()
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches.
--- Add your language server below:
-local servers = {
-  'bashls',
-  'clangd',
-  'cssls',
-  'gopls',
-  'html',
-  'sumneko_lua',
-  'pyright',
-  'tsserver',
-}
-
--- Call setup
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    root_dir = root_dir,
-    capabilities = capabilities,
-    flags = {
-      -- default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
-  }
-end
