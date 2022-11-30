@@ -67,6 +67,15 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+  vim.api.nvim_create_augroup('lsp_auto_format', { clear = true })
+  vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_auto_format" }
+  vim.api.nvim_create_autocmd('BufWritePre', {
+    callback = vim.lsp.buf.formatting_sync,
+    buffer = bufnr,
+    group = 'lsp_auto_format',
+    desc = 'Format file on save',
+  })
 end
 
 -- Diagnostic settings:
