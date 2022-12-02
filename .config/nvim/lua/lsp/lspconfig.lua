@@ -139,8 +139,8 @@ local servers = {
   'bashls',
   'clangd',
   'cssls',
-  'gopls',
   'html',
+  'jsonls',
   'pyright',
   'tsserver',
 }
@@ -158,6 +158,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- Servers that need different init
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   root_dir = root_dir,
@@ -182,4 +183,9 @@ lspconfig.sumneko_lua.setup {
       },
     },
   },
+}
+
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
 }
