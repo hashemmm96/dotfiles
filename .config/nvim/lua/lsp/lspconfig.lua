@@ -121,13 +121,6 @@ HTML/CSS/JSON -> vscode-html-languageserver
 JavaScript/TypeScript -> tsserver
 --]]
 
--- Define `root_dir` when needed
--- See: https://github.com/neovim/nvim-lspconfig/issues/320
--- This is a workaround, maybe not work with some servers.
-local root_dir = function()
-  return vim.fn.getcwd()
-end
-
 -- Setup mason which auto installs LSP servers
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -139,8 +132,10 @@ local servers = {
   'bashls',
   'clangd',
   'cssls',
+  'gopls',
   'html',
   'jsonls',
+  'marksman',
   'pyright',
   'tsserver',
 }
@@ -149,19 +144,13 @@ local servers = {
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
-    root_dir = root_dir,
     capabilities = capabilities,
-    flags = {
-      -- default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
   }
 end
 
 -- Servers that need different init
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
-  root_dir = root_dir,
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -183,9 +172,4 @@ lspconfig.sumneko_lua.setup {
       },
     },
   },
-}
-
-lspconfig.gopls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
 }
