@@ -173,3 +173,16 @@ lspconfig.lua_ls.setup {
     },
   },
 }
+
+lspconfig.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      format = 'enable',
+      schemas = {
+        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
+      },
+    },
+  },
+}

@@ -13,3 +13,4 @@ require('plugins/nvim-treesitter')
 require('plugins/nvim-telescope')
 
 require('lang/go')
+require('lang/meson')

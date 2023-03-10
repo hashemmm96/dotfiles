@@ -23,7 +23,8 @@ opt.modeline = false -- Disable modelines
 -----------------------------------------------------------
 opt.number = true -- Show line number
 opt.showmatch = true -- Highlight matching parenthesis
-opt.foldmethod = 'syntax' -- Enable folding (default 'foldmarker')
+opt.foldmethod = 'expr' -- Enable folding (default 'foldmarker')
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
 --opt.colorcolumn = '80'      -- Line length marker at 80 columns
 opt.splitright = true -- Vertical split to the right
 opt.splitbelow = true -- Horizontal split to the bottom
