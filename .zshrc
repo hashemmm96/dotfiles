@@ -103,3 +103,6 @@ fi
 alias ll='ls -lah'
 alias find='fdfind'
 alias cat='batcat --color always --paging always'
+
+/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
+source $HOME/.keychain/$HOST-sh
