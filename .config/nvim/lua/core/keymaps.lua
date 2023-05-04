@@ -34,7 +34,7 @@ map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
 -- Reload configuration without restart nvim
-map('n', '<leader>r', ':so %<CR>')
+map('n', '<leader>r', ':source $MYVIMRC<CR>')
 
 -- Fast saving with <leader> and s
 map('n', '<leader>s', ':w<CR>')
@@ -51,11 +51,11 @@ map('v', '<', '<gv')
 
 -- Terminal mappings
 map('n', '<C-t>', ':Term<CR>', { noremap = true }) -- open
-map('t', '<Esc>', '<C-\\><C-n>') -- exit
+map('t', '<Esc>', '<C-\\><C-n>')                   -- exit
 
 -- NvimTree
-map('n', '<C-n>', ':NvimTreeToggle<CR>') -- open/close
-map('n', '<leader>f', ':NvimTreeRefresh<CR>') -- refresh
+map('n', '<C-n>', ':NvimTreeToggle<CR>')       -- open/close
+map('n', '<leader>f', ':NvimTreeRefresh<CR>')  -- refresh
 map('n', '<leader>n', ':NvimTreeFindFile<CR>') -- search file
 
 -- Tagbar
