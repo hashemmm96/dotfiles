@@ -9,7 +9,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="lukerandall"
-#ZSH_THEME="hashem"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -103,6 +102,8 @@ fi
 alias ll='ls -lah'
 alias find='fdfind'
 alias cat='batcat --color always --paging always'
+alias grep='rg'
+alias ghpr='gh pr --create --fill'
 
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
+keychain -q --nogui $HOME/.ssh/id_ed25519
 source $HOME/.keychain/$HOST-sh
