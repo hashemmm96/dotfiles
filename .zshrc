@@ -103,7 +103,7 @@ alias ll='ls -lah'
 alias find='fdfind'
 alias cat='batcat --color always --paging always'
 alias grep='rg'
-alias ghpr='gh pr --create --fill'
+alias ghpr='gh pr create --fill'
 
 keychain -q --nogui $HOME/.ssh/id_ed25519
 source $HOME/.keychain/$HOST-sh
