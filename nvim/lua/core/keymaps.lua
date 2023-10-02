@@ -10,18 +10,11 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Change leader to a comma
-vim.g.mapleader = ','
-
 -----------------------------------------------------------
 -- Neovim shortcuts
 -----------------------------------------------------------
 -- Clear search highlighting with <leader> and c
 map('n', '<leader>c', ':nohl<CR>')
-
--- Toggle auto-indenting for code paste
-map('n', '<F2>', ':set invpaste paste?<CR>')
-vim.opt.pastetoggle = '<F2>'
 
 -- Change split orientation
 map('n', '<leader>tk', '<C-w>t<C-w>K') -- change vertical to horizontal
@@ -36,27 +29,14 @@ map('n', '<C-l>', '<C-w>l')
 -- Reload configuration without restart nvim
 map('n', '<leader>r', ':source $MYVIMRC<CR>')
 
--- Fast saving with <leader> and s
-map('n', '<leader>s', ':w<CR>')
-
 -- Close all windows and exit from Neovim with <leader> and q
 map('n', '<leader>q', ':qa!<CR>')
 
 -- Do not exit visual mode after indent
 map('v', '>', '>gv')
 map('v', '<', '<gv')
------------------------------------------------------------
--- Applications and Plugins shortcuts
------------------------------------------------------------
-
--- Terminal mappings
-map('n', '<C-t>', ':Term<CR>', { noremap = true }) -- open
-map('t', '<Esc>', '<C-\\><C-n>')                   -- exit
 
 -- NvimTree
 map('n', '<C-n>', ':NvimTreeToggle<CR>')       -- open/close
 map('n', '<leader>f', ':NvimTreeRefresh<CR>')  -- refresh
 map('n', '<leader>n', ':NvimTreeFindFile<CR>') -- search file
-
--- Tagbar
-map('n', '<leader>z', ':TagbarToggle<CR>') -- open/close

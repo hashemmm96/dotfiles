@@ -1,15 +1,7 @@
 ----------------------------------------------------------
 -- Statusline configuration file
 -----------------------------------------------------------
-
--- Plugin: feline.nvim
--- url: https://github.com/feline-nvim/feline.nvim
-
--- For the configuration see the Usage section:
--- https://github.com/feline-nvim/feline.nvim/blob/master/USAGE.md
-
--- Thanks to ibhagwan for the example to follow:
--- https://github.com/ibhagwan/nvim-lua
+-- https://github.com/freddiehaddad/feline.nvim
 
 local status_ok, feline = pcall(require, 'feline')
 if not status_ok then
@@ -37,14 +29,7 @@ local vi_mode_colors = {
 }
 
 -- Providers (LSP, vi_mode)
-local lsp = require 'feline.providers.lsp'
 local vi_mode_utils = require 'feline.providers.vi_mode'
-
--- LSP diagnostic
-local lsp_get_diag = function(str)
-  local count = vim.lsp.diagnostic.get_count(0, str)
-  return (count > 0) and ' '..count..' ' or ''
-end
 
 local separator = '|'
 
