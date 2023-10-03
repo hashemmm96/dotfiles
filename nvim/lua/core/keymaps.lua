@@ -26,17 +26,9 @@ map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
--- Reload configuration without restart nvim
-map('n', '<leader>r', ':source $MYVIMRC<CR>')
-
 -- Close all windows and exit from Neovim with <leader> and q
 map('n', '<leader>q', ':qa!<CR>')
 
 -- Do not exit visual mode after indent
 map('v', '>', '>gv')
 map('v', '<', '<gv')
-
--- NvimTree
-map('n', '<C-n>', ':NvimTreeToggle<CR>')       -- open/close
-map('n', '<leader>f', ':NvimTreeRefresh<CR>')  -- refresh
-map('n', '<leader>n', ':NvimTreeFindFile<CR>') -- search file

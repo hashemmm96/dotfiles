@@ -69,26 +69,16 @@ autocmd('Filetype', {
   command = 'setlocal filetype=jsonc'
 })
 
--- Terminal settings:
----------------------
-
--- Open a Terminal on the right tab
-autocmd('CmdlineEnter', {
-  command = 'command! Term :botright vsplit term://$SHELL'
+-- Setup meson filetype autocmds
+augroup('Meson', { clear = true })
+autocmd({ 'BufRead', 'BufNewFile' }, {
+  group = 'Meson',
+  pattern = 'meson.build',
+  command = 'set filetype=meson',
 })
 
--- Enter insert mode when switching to terminal
-autocmd('TermOpen', {
-  command = 'setlocal listchars= nonumber norelativenumber nocursorline',
-})
-
-autocmd('TermOpen', {
-  pattern = '',
-  command = 'startinsert'
-})
-
--- Close terminal buffer on process exit
-autocmd('BufLeave', {
-  pattern = 'term://*',
-  command = 'stopinsert'
+autocmd({ 'BufRead', 'BufNewFile' }, {
+  group = 'Meson',
+  pattern = 'meson_options.txt',
+  command = 'set filetype=mesonopt',
 })
