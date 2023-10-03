@@ -126,6 +126,7 @@ return {
       'jsonls',
       'marksman',
       'pyright',
+      'swift_mesonls',
       'tsserver',
     }
 
