@@ -52,6 +52,10 @@ opt.lazyredraw = true -- Faster scrolling
 opt.synmaxcol = 240   -- Max column for syntax highlight
 opt.updatetime = 250  -- ms to wait for trigger an event
 
+--
+g.python3_host_prog = '$HOME/.nvim-venv/bin/python3'
+--
+
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
