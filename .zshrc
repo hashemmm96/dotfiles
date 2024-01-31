@@ -101,7 +101,7 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll='ls -lah'
 alias find='fdfind'
-alias cat='batcat --color always --paging always'
+alias cat='batcat'
 alias grep='rg'
 alias ghpr='gh pr create --fill'
 
