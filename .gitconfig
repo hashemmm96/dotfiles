@@ -20,3 +20,9 @@
 [alias]
   l1 = log --color --graph --pretty=format:\"%C(bold blue)%h%Creset   %C(green)%d%Creset %s %C(yellow)%an %C(italic magenta)%ad %Creset\" --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S'
   ll = l1 --all
+
+[merge]
+	ff = only
+
+[init]
+	defaultBranch = main
