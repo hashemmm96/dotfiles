@@ -56,6 +56,9 @@ opt.updatetime = 250  -- ms to wait for trigger an event
 g.python3_host_prog = '$HOME/.nvim-venv/bin/python3'
 --
 
+-- Assume h files are C files instead of C++
+g.c_syntax_for_h = 1
+
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
