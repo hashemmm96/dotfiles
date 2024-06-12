@@ -127,7 +127,7 @@ return {
       'marksman',
       'pyright',
       'rust_analyzer',
-      'swift_mesonls',
+      'mesonlsp',
       'tsserver',
     }
 
