@@ -1,4 +1,4 @@
 return {
-  'rust-lang/rust.vim',
-  ft = 'rs',
+    'rust-lang/rust.vim',
+    ft = 'rs',
 }

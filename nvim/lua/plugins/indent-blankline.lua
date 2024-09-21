@@ -1,10 +1,8 @@
 return {
   'lukas-reineke/indent-blankline.nvim',
   main = 'ibl',
-  opts = {},
-  config = function()
-    require('ibl').setup {
-      indent = { char = '·' },
+  opts = {
+        indent = { char = '·' },
       exclude = {
         filetypes = {
           'lspinfo',
@@ -26,6 +24,5 @@ return {
           'prompt',
         },
       },
-    }
-  end
+    },
 }

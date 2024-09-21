@@ -1,4 +1,5 @@
 return {
-  'plasticboy/vim-markdown',
-  ft = { 'md', 'markdown' }
+    'plasticboy/vim-markdown',
+    ft = { 'md', 'markdown' },
 }
+
