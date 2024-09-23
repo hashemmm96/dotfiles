@@ -2,12 +2,10 @@ return {
     'windwp/nvim-autopairs',
     'tpope/vim-fugitive',
     'lewis6991/gitsigns.nvim',
-
     {
         'nvim-lualine/lualine.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
     },
-
     {
         'navarasu/onedark.nvim',
         config = function()
@@ -17,5 +15,17 @@ return {
             })
             require('onedark').load()
         end
+    },
+    {
+        'rust-lang/rust.vim',
+        ft = 'rs',
+    },
+    {
+        'hashivim/vim-terraform',
+        ft = 'tf',
+    },
+    {
+        'plasticboy/vim-markdown',
+        ft = { 'md', 'markdown' },
     },
 }
