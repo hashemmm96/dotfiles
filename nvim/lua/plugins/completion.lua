@@ -178,31 +178,6 @@ return {
             },
         }
 
-        lspconfig.pyright.setup {
-            on_attach = function(client, bufnr)
-                on_attach(client, bufnr)
-
-                local format = function()
-                    local file = vim.api.nvim_buf_get_name(0)
-                    vim.cmd.write(file)
-                    vim.system({ "black", file }, {}):wait()
-                    vim.system({ "isort", "--gitignore", "--profile", "black", file }):wait()
-                    vim.cmd.edit(file)
-                end
-
-                -- Override binding for formatting to use both black and isort
-                vim.keymap.set('n', '<space>f', format, { noremap = true, silent = true })
-
-                vim.api.nvim_create_augroup("lsp_format", { clear = true })
-                vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_format" }
-                vim.api.nvim_create_autocmd('BufWritePre', {
-                    group = "lsp_format",
-                    callback = format,
-                })
-            end,
-            capabilities = capabilities,
-        }
-
         lspconfig.yamlls.setup {
             on_attach = on_attach,
             capabilities = capabilities,

@@ -28,4 +28,12 @@ return {
         'plasticboy/vim-markdown',
         ft = { 'md', 'markdown' },
     },
+
+    {
+        'lewis6991/satellite.nvim',
+        opts = {
+            width = 64,
+            winblend = 0,
+        },
+    },
 }
