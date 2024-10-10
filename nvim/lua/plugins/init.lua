@@ -1,6 +1,5 @@
 return {
     'windwp/nvim-autopairs',
-    'tpope/vim-fugitive',
     'lewis6991/gitsigns.nvim',
     {
         'nvim-lualine/lualine.nvim',
