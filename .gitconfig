@@ -21,8 +21,20 @@
   l1 = log --color --graph --pretty=format:\"%C(bold blue)%h%Creset   %C(green)%d%Creset %s %C(yellow)%an %C(italic magenta)%ad %Creset\" --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S'
   ll = l1 --all
 
+[user]
+	name = Hashem Hashem
+
 [merge]
 	ff = only
 
 [init]
 	defaultBranch = main
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[push]
+	default = current
