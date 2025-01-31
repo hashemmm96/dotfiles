@@ -139,6 +139,7 @@ return {
             'marksman',
             'mesonlsp',
             'pyright',
+            'ruff',
             'rust_analyzer',
             'ts_ls',
             'yamlls',
