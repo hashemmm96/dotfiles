@@ -70,7 +70,7 @@ ZSH_THEME="lukerandall"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git exercism)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,7 +103,7 @@ alias ll='ls -lh'
 alias la='ls -lah'
 alias ghpr='gh pr create --fill'
 
-#Add /usr/sbin
+# Add /usr/sbin
 export PATH=/usr/sbin:$PATH
 
 # keychain -q --nogui $HOME/.ssh/id_ed25519
