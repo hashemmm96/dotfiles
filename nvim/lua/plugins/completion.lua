@@ -15,7 +15,6 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup()
 
-        local lspconfig = require('lspconfig')
         local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
         -- Add additional capabilities supported by nvim-cmp
@@ -145,16 +144,16 @@ return {
             'yamlls',
         }
 
-        -- Call setup
+        -- Call setup using new vim.lsp.config API
         for _, lsp in ipairs(servers) do
-            lspconfig[lsp].setup {
+            vim.lsp.config[lsp] = {
                 on_attach = on_attach,
                 capabilities = capabilities,
             }
         end
 
         -- Override setup for servers that need custom init
-        lspconfig.lua_ls.setup {
+        vim.lsp.config.lua_ls = {
             on_attach = on_attach,
             capabilities = capabilities,
             settings = {
@@ -179,7 +178,7 @@ return {
             },
         }
 
-        lspconfig.yamlls.setup {
+        vim.lsp.config.yamlls = {
             on_attach = on_attach,
             capabilities = capabilities,
             settings = {
