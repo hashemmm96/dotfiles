@@ -20,10 +20,6 @@ return {
         ft = 'rs',
     },
     {
-        'hashivim/vim-terraform',
-        ft = 'tf',
-    },
-    {
         'plasticboy/vim-markdown',
         ft = { 'md', 'markdown' },
     },
