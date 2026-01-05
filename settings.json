@@ -1,0 +1,30 @@
+{
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "STM32VSCodeExtension.projectCreator.executablePath": "/home/hashem/ST/STM32CubeMX/STM32CubeMX",
+    "STM32VSCodeExtension.cubeCLT.path": "/home/hashem/ST/stm32cubeclt_1.17.0",
+    "editor.fontFamily": "'Cousine Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
+    "editor.fontSize": 16,
+    "files.insertFinalNewline": true,
+    "git.autofetch": true,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "mesonbuild.downloadLanguageServer": true,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "claudeCode.preferredLocation": "panel",
+    "workbench.colorTheme": "Default Dark+",
+    "clangd.path": "/home/hashem/.config/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/19.1.2/clangd_19.1.2/bin/clangd",
+    "workbench.externalBrowser": "firefox",
+    "idf.hasWalkthroughBeenShown": true,
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "rules": {
+            "*.mutable": {
+                "underline": false,
+            }
+        }
+    }
+}
