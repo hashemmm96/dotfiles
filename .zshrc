@@ -102,6 +102,7 @@ fi
 alias ll='ls -lh'
 alias la='ls -lah'
 alias ghpr='gh pr create --fill'
+alias ip='ip -c'
 
 # Add /usr/sbin
 export PATH=/usr/sbin:$PATH
