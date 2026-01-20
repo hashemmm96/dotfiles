@@ -103,6 +103,8 @@ alias ll='ls -lh'
 alias la='ls -lah'
 alias ghpr='gh pr create --fill'
 alias ip='ip -c'
+alias bat='batcat'
+alias fd='fdfind'
 
 # Add /usr/sbin
 export PATH=/usr/sbin:$PATH
