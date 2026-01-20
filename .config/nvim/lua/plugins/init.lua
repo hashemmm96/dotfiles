@@ -19,15 +19,6 @@ return {
         end
     },
     {
-        'rust-lang/rust.vim',
-        ft = 'rs',
-    },
-    {
-        'plasticboy/vim-markdown',
-        ft = { 'md', 'markdown' },
-    },
-
-    {
         'lewis6991/satellite.nvim',
         opts = {
             width = 64,
