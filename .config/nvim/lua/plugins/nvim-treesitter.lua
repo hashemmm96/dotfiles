@@ -11,6 +11,7 @@ return {
                 'c',
                 'cpp',
                 'css',
+                'dockerfile',
                 'html',
                 'javascript',
                 'json',

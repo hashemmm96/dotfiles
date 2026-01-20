@@ -75,12 +75,12 @@ return {
             end
 
             if client.server_capabilities.documentFormattingProvider then
-                vim.api.nvim_create_augroup("lsp_format", { clear = true })
-                vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_format" }
+                vim.api.nvim_create_augroup("lsp_format_" .. bufnr, { clear = true })
                 vim.api.nvim_create_autocmd('BufWritePre', {
-                    group = "lsp_format",
+                    group = "lsp_format_" .. bufnr,
+                    buffer = bufnr,
                     callback = function()
-                        vim.lsp.buf.format()
+                        vim.lsp.buf.format({ bufnr = bufnr })
                     end,
                 })
             end
@@ -112,17 +112,15 @@ return {
             )
 
             vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-            vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+            vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
+            vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end, opts)
             vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
         end
 
 
-        --[[
-    Language servers setup
-    For language servers list see:
-    https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    --]]
+        -- Language servers setup
+        -- For language servers list see:
+        -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 
         -- Use a loop to conveniently call 'setup' on multiple servers and
         -- map buffer local keybindings when the language server attaches.
