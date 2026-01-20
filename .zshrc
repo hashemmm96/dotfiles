@@ -106,9 +106,6 @@ alias ip='ip -c'
 alias bat='batcat'
 alias fd='fdfind'
 
-# Add /usr/sbin
-export PATH=/usr/sbin:$PATH
-
 # keychain -q --nogui $HOME/.ssh/id_ed25519
 # source $HOME/.keychain/$HOST-sh
 
