@@ -10,7 +10,10 @@ return {
         config = function()
             require('onedark').setup({
                 -- styles: dark, darker, cool, deep, warm, warmer, light
-                style = 'warmer'
+                style = 'warmer',
+
+                -- This forces the background to be NONE, inheriting from Terminal
+                transparent = true
             })
             require('onedark').load()
         end
