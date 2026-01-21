@@ -39,3 +39,6 @@ keybind = ctrl+b>ctrl+j=new_split:down
 keybind = ctrl+b>ctrl+k=new_split:up
 keybind = ctrl+b>ctrl+l=new_split:right
 keybind = ctrl+b>f=toggle_split_zoom
+
+# bind default fullscreen binding to carriage return
+keybind = ctrl+enter=text:\r
