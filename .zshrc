@@ -105,7 +105,7 @@ alias ghpr='gh pr create --fill'
 alias ip='ip -c'
 alias bat='batcat'
 alias fd='fdfind'
-alias git-rm-merged='git fetch -p && git branch --merged | grep -v main$ | grep -v "\*" | xargs git branch -d'
+alias git-rm-merged='git fetch -p && git branch --merged | grep -v "\* main$" | grep -v "\*" | xargs git branch -D'
 
 # keychain -q --nogui $HOME/.ssh/id_ed25519
 # source $HOME/.keychain/$HOST-sh
