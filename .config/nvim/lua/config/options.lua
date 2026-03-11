@@ -23,8 +23,9 @@ opt.modeline = false                          -- Disable modelines
 -----------------------------------------------------------
 opt.number = true       -- Show line number
 opt.showmatch = true    -- Highlight matching parenthesis
-opt.foldmethod = 'expr' -- Enable folding (default 'foldmarker')
-opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.foldmethod = 'expr'                        -- Enable folding (default 'foldmarker')
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()' -- Treesitter folding by default; overridden per buffer by LspAttach
+opt.foldlevel = 99                             -- Open all folds by default
 --opt.colorcolumn = '80'      -- Line length marker at 80 columns
 opt.splitright = true    -- Vertical split to the right
 opt.splitbelow = true    -- Horizontal split to the bottom

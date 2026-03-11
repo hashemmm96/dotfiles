@@ -23,10 +23,23 @@ autocmd('BufEnter', {
     command = [[set titlestring=\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}]]
 })
 
--- Change fold method to 'indent' for python files
-augroup('setFoldMethod', { clear = true })
-autocmd('Filetype', {
-    group = 'setFoldMethod',
-    pattern = { 'python' },
-    command = 'setlocal foldmethod=indent'
+-- Use LSP folding when an LSP attaches; fall back to treesitter when it detaches
+augroup('LspFolding', { clear = true })
+autocmd('LspAttach', {
+    group = 'LspFolding',
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client and client.server_capabilities.foldingRangeProvider then
+            vim.wo.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+        end
+    end,
+})
+autocmd('LspDetach', {
+    group = 'LspFolding',
+    callback = function(args)
+        local bufnr = args.buf
+        if vim.tbl_isempty(vim.lsp.get_clients({ bufnr = bufnr })) then
+            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        end
+    end,
 })
