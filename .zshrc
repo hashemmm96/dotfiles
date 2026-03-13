@@ -107,6 +107,12 @@ alias bat='batcat'
 alias fd='fdfind'
 alias git-rm-merged='git fetch -p && git branch --merged | grep -v "\* main$" | grep -v "\*" | xargs git branch -D'
 
+# Allow running cargo with sudo
+cargo_w_sudo() {
+    sudo env "PATH=$PATH" "RUSTUP_HOME=$HOME/.rustup" "CARGO_HOME=$HOME/.cargo" $@
+}
+
+
 # keychain -q --nogui $HOME/.ssh/id_ed25519
 # source $HOME/.keychain/$HOST-sh
 
