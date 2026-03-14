@@ -105,7 +105,6 @@ alias ghpr='gh pr create --fill'
 alias ip='ip -c'
 alias bat='batcat'
 alias fd='fdfind'
-alias git-rm-merged='git fetch -p && git branch --merged | grep -v "\* main$" | grep -v "\*" | xargs git branch -D'
 
 # Allow running cargo with sudo
 cargo_w_sudo() {

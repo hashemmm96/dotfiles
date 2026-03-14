@@ -1,41 +1,42 @@
 [core]
-  editor = nvim
+    editor = nvim
 
 [color]
-  ui = auto
+    ui = auto
 
 [sendemail]
-  confirm = always
-  suppresscc = self
+    confirm = always
+    suppresscc = self
 
 [diff]
-  tool = nvimdiff
+    tool = nvimdiff
 
 [difftool]
-  prompt = false
+    prompt = false
 
 [difftool "nvimdiff"]
-  cmd = "nvim -d -R -M \"$LOCAL\" \"$REMOTE\""
+    cmd = "nvim -d -R -M \"$LOCAL\" \"$REMOTE\""
 
 [alias]
-  l1 = log --color --graph --pretty=format:\"%C(bold blue)%h%Creset   %C(green)%d%Creset %s %C(yellow)%an %C(italic magenta)%ad %Creset\" --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S'
-  ll = l1 --all
+    l1 = log --color --graph --pretty=format:\"%C(bold blue)%h%Creset   %C(green)%d%Creset %s %C(yellow)%an %C(italic magenta)%ad %Creset\" --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S'
+    ll = l1 --all
+    rm-merged = !git fetch -p && git branch -vv | awk \"/: gone\\]/ {print \\$1}\" | xargs -r git branch -D
 
 [user]
-	name = Hashem Hashem
+    name = Hashem Hashem
 
 [merge]
-	ff = only
+    ff = only
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
 
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
 
 [push]
-	default = current
-	autoSetupRemote = true
+    default = current
+    autoSetupRemote = true
