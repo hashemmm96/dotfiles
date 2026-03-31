@@ -144,6 +144,7 @@ return {
             'pyright',
             'ruff',
             'rust_analyzer',
+            'svelte',
             'ts_ls',
             'yamlls',
         }

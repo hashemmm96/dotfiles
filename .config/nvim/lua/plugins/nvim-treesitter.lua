@@ -20,6 +20,7 @@ return {
                 'markdown_inline',
                 'python',
                 'rust',
+                'svelte',
                 'toml',
                 'typescript',
                 'vim',
