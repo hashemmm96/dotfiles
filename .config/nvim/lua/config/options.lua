@@ -15,18 +15,15 @@ local opt = vim.opt -- Set options (global/buffer/windows-scoped)
 opt.mouse = 'a'                               -- Enable mouse support
 opt.clipboard = 'unnamedplus'                 -- Copy/paste to system clipboard
 opt.swapfile = false                          -- Don't use swapfile
-opt.completeopt = 'menuone,noinsert,noselect' -- Autocomplete options
+opt.completeopt = 'menu,menuone,noinsert' -- Autocomplete options (blink.cmp recommended)
 opt.modeline = false                          -- Disable modelines
 
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
-opt.number = true       -- Show line number
-opt.showmatch = true    -- Highlight matching parenthesis
-opt.foldmethod = 'expr'                        -- Enable folding (default 'foldmarker')
-opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()' -- Treesitter folding by default; overridden per buffer by LspAttach
-opt.foldlevel = 99                             -- Open all folds by default
---opt.colorcolumn = '80'      -- Line length marker at 80 columns
+opt.number = true        -- Show line number
+opt.showmatch = true     -- Highlight matching parenthesis
+opt.foldlevel = 99       -- Open all folds by default
 opt.splitright = true    -- Vertical split to the right
 opt.splitbelow = true    -- Horizontal split to the bottom
 opt.ignorecase = true    -- Ignore case letters when search
@@ -35,6 +32,7 @@ opt.linebreak = true     -- Wrap on word boundary
 opt.termguicolors = true -- Enable 24-bit RGB colors
 opt.laststatus = 3       -- Set global statusline
 opt.title = true         -- Show windows title
+opt.titlestring = '%{substitute(getcwd(),$HOME,"~","")}'
 
 -----------------------------------------------------------
 -- Tabs, indent
@@ -47,51 +45,42 @@ opt.smartindent = true -- Autoindent new lines
 -----------------------------------------------------------
 -- Memory, CPU
 -----------------------------------------------------------
-opt.hidden = true     -- Enable background buffers
-opt.history = 100     -- Remember N lines in history
-opt.lazyredraw = true -- Faster scrolling
-opt.synmaxcol = 240   -- Max column for syntax highlight
-opt.updatetime = 250  -- ms to wait for trigger an event
+opt.hidden = true    -- Enable background buffers
+opt.history = 100    -- Remember N lines in history
+opt.updatetime = 250 -- ms to wait for trigger an event
 
---
-g.python3_host_prog = '$HOME/.nvim-venv/bin/python3'
---
-
--- Assume h files are C files instead of C++
-g.c_syntax_for_h = 1
+g.python3_host_prog = vim.fn.expand('~/.nvim-venv/bin/python3')
 
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
--- -- Disable builtin plugins
+-- Disable a few built-in plugins that are rarely used
 local disabled_built_ins = {
-    "2html_plugin",
-    "getscript",
-    "getscriptPlugin",
-    "gzip",
-    "logipat",
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "matchit",
-    "tar",
-    "tarPlugin",
-    "rrhelper",
-    "spellfile_plugin",
-    "vimball",
-    "vimballPlugin",
-    "zip",
-    "zipPlugin",
-    "tutor",
-    "rplugin",
-    "synmenu",
-    "optwin",
-    "compiler",
-    "bugreport",
-    "ftplugin",
+    '2html_plugin',
+    'getscript',
+    'getscriptPlugin',
+    'gzip',
+    'logipat',
+    'netrw',
+    'netrwPlugin',
+    'netrwSettings',
+    'netrwFileHandlers',
+    'tar',
+    'tarPlugin',
+    'rrhelper',
+    'spellfile_plugin',
+    'vimball',
+    'vimballPlugin',
+    'zip',
+    'zipPlugin',
+    'tutor',
+    'rplugin',
+    'synmenu',
+    'optwin',
+    'compiler',
+    'bugreport',
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-    g["loaded_" .. plugin] = 1
+    g['loaded_' .. plugin] = 1
 end

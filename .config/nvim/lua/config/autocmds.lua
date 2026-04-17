@@ -2,25 +2,16 @@
 -- Autocommand functions
 -----------------------------------------------------------
 
--- Define autocommands with Lua APIs
--- See: h:api-autocmd, h:augroup
-
-local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
-local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 
 -- Highlight on yank
 augroup('YankHighlight', { clear = true })
 autocmd('TextYankPost', {
     group = 'YankHighlight',
     callback = function()
-        vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
-    end
-})
-
--- Set window title
-autocmd('BufEnter', {
-    pattern = '',
-    command = [[set titlestring=\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}]]
+        vim.hl.on_yank({ higroup = 'IncSearch', timeout = 1000 })
+    end,
 })
 
 -- Use LSP folding when an LSP attaches; fall back to treesitter when it detaches
@@ -37,8 +28,7 @@ autocmd('LspAttach', {
 autocmd('LspDetach', {
     group = 'LspFolding',
     callback = function(args)
-        local bufnr = args.buf
-        if vim.tbl_isempty(vim.lsp.get_clients({ bufnr = bufnr })) then
+        if vim.tbl_isempty(vim.lsp.get_clients({ bufnr = args.buf })) then
             vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
         end
     end,

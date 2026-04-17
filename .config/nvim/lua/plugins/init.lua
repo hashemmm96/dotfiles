@@ -1,9 +1,10 @@
 return {
-    'windwp/nvim-autopairs',
-    'lewis6991/gitsigns.nvim',
+    { 'windwp/nvim-autopairs',   event = 'InsertEnter',                  opts = {} },
+    { 'lewis6991/gitsigns.nvim', event = { 'BufReadPre', 'BufNewFile' }, opts = {} },
     {
         'nvim-lualine/lualine.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
+        opts = {},
     },
     {
         'navarasu/onedark.nvim',
