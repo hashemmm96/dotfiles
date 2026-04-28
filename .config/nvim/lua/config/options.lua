@@ -49,8 +49,6 @@ opt.hidden = true    -- Enable background buffers
 opt.history = 100    -- Remember N lines in history
 opt.updatetime = 250 -- ms to wait for trigger an event
 
-g.python3_host_prog = vim.fn.expand('~/.nvim-venv/bin/python3')
-
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------

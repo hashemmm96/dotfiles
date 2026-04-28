@@ -1,8 +1,14 @@
+local is_windows = vim.fn.has('win32') == 1
+
 return {
     'nvim-telescope/telescope.nvim',
     dependencies = {
         'nvim-lua/plenary.nvim',
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            build = 'make',
+            cond = not is_windows,
+        },
     },
 
     config = function()
@@ -36,11 +42,13 @@ return {
                     },
                 },
                 find_files = {
-                    find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--exclude", ".git/*" },
+                    find_command = { vim.fn.executable('fdfind') == 1 and 'fdfind' or 'fd', "--type", "f", "--strip-cwd-prefix", "--hidden", "--exclude", ".git/*" },
                 },
             },
         }
 
-        require('telescope').load_extension('fzf')
+        if not is_windows then
+            require('telescope').load_extension('fzf')
+        end
     end
 }

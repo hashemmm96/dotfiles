@@ -57,7 +57,6 @@ return {
                 'lua_ls',        -- Lua
                 'marksman',      -- Markdown
                 'pyright',       -- Python (types)
-                'ruff',          -- Python (lint/format)
                 'rust_analyzer', -- Rust
                 'svelte',        -- Svelte
                 'ts_ls',         -- TypeScript / JavaScript
@@ -65,13 +64,19 @@ return {
             }
 
             require('mason-lspconfig').setup({
-                ensure_installed = servers,
+                ensure_installed = vim.list_extend({}, servers),
                 automatic_enable = false, -- we call vim.lsp.enable() ourselves below
             })
 
             -- mesonlsp isn't in the Mason registry; enable it if the system binary is present.
             if vim.fn.executable('mesonlsp') == 1 then
                 table.insert(servers, 'mesonlsp')
+            end
+
+            -- ruff is installed via `uv tool install ruff` rather than Mason
+            -- (Mason's pypi installer needs python3 on PATH, which isn't reliable on Windows).
+            if vim.fn.executable('ruff') == 1 then
+                table.insert(servers, 'ruff')
             end
 
             local capabilities = require('blink.cmp').get_lsp_capabilities()
