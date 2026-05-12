@@ -24,7 +24,7 @@
 font-family = Cousine Nerd Font
 shell-integration = zsh
 theme = Atom One Dark
-scrollback-limit = 100000
+scrollback-limit = 100000000
 split-divider-color = ffffff
 mouse-hide-while-typing = true
 
