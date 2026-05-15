@@ -22,6 +22,8 @@
 # a full restart to take effect.
 
 font-family = Cousine Nerd Font
+font-size = 11
+adjust-cell-width = -1
 shell-integration = zsh
 theme = Atom One Dark
 scrollback-limit = 100000000
