@@ -22,13 +22,14 @@
 # a full restart to take effect.
 
 font-family = Cousine Nerd Font
-font-size = 11
+font-size = 12
 adjust-cell-width = -1
 shell-integration = zsh
 theme = Atom One Dark
 scrollback-limit = 100000000
 split-divider-color = ffffff
 mouse-hide-while-typing = true
+notify-on-command-finish = unfocused
 
 # Splits
 keybind = ctrl+b>h=goto_split:left
@@ -44,3 +45,4 @@ keybind = ctrl+b>f=toggle_split_zoom
 
 # bind default fullscreen binding to carriage return
 keybind = ctrl+enter=text:\r
+window-decoration = client
