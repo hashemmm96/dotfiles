@@ -22,7 +22,10 @@
 # a full restart to take effect.
 
 font-family = Cousine Nerd Font
+font-family = Noto Sans Mono
 font-size = 12
+font-codepoint-map = U+2190-U+21FF=DejaVu Sans Mono
+font-codepoint-map = U+2300-U+23FF=DejaVu Sans Mono
 adjust-cell-width = -1
 shell-integration = zsh
 theme = Atom One Dark
